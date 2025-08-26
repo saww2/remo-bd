@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Happy Birthday 💝</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="bg">
+  <div class="hearts" aria-hidden="true"></div>
+  <main class="container">
+    <h1 class="title">🎂 Happy Birthday! 🎂</h1>
+    <p class="subtitle">I love you 💖</p>
+
+    <div class="controls">
+      <audio id="song" src="assets/song.mp3"></audio>
+      <button id="playBtn" class="btn">Play Music 🎵</button>
+      <button id="pauseBtn" class="btn btn-ghost">Pause ⏸️</button>
+    </div>
+
+    <a href="quotes.html" class="btn enter">Enter ➜</a>
+  </main>
+
+  <script src="assets/script.js"></script>
+  <script>
+    // Page 1 specific
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('song');
+      const playBtn = document.getElementById('playBtn');
+      const pauseBtn = document.getElementById('pauseBtn');
+      playBtn.addEventListener('click', () => audio.play());
+      pauseBtn.addEventListener('click', () => audio.pause());
+    });
+  </script>
+</body>
+</html>

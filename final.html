@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>My Love, Always 💖</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="bg">
+  <canvas id="confetti"></canvas>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <main class="container">
+    <h2 class="title">💌 My Forever Message 💌</h2>
+    <p class="subtitle">You are my favorite everything. Happy Birthday, my love.</p>
+
+    <div class="lyrics-box">
+      <audio id="finalSong" src="assets/song.mp3" preload="auto" controls></audio>
+      <ol id="lyrics" class="lyrics">
+        <li data-t="0">Happy birthday to you</li>
+        <li data-t="3">Happy birthday to you</li>
+        <li data-t="6">Happy birthday dear my love</li>
+        <li data-t="10">Happy birthday to you 🎶</li>
+        <li data-t="14">I wish you joy and laughter</li>
+        <li data-t="18">Moments sweet and new</li>
+        <li data-t="22">Filled with love and sunshine</li>
+        <li data-t="26">Because my heart chose you 💖</li>
+      </ol>
+    </div>
+  </main>
+
+  <script src="assets/script.js"></script>
+  <script>
+    // Lyrics sync + confetti trigger
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('finalSong');
+      const lines = Array.from(document.querySelectorAll('#lyrics li'));
+      let confettiStarted = False;
+
+      function updateLyrics() {
+        const t = audio.currentTime;
+        lines.forEach((line, idx) => {
+          const start = parseFloat(line.dataset.t);
+          const nextStart = idx < lines.length - 1 ? parseFloat(lines[idx+1].dataset.t) : 1e9;
+          line.classList.toggle('active', t >= start && t < nextStart);
+        });
+        requestAnimationFrame(updateLyrics);
+      }
+
+      // Start when user hits play (autoplay might be blocked)
+      audio.addEventListener('play', () => {
+        // start confetti once when song starts
+        if (!window._confettiRunning) {
+          window._confettiRunning = true;
+          startConfetti();
+        }
+        requestAnimationFrame(updateLyrics);
+      });
+    });
+  </script>
+</body>
+</html>

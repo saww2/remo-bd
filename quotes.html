@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Love Quotes 💌</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="bg">
+  <div class="hearts" aria-hidden="true"></div>
+  <main class="container">
+    <h2 class="title">Love Quotes</h2>
+    <div id="carousel" class="carousel">
+      <div class="quote active">"Love is seeing you in everything beautiful."</div>
+      <div class="quote">"You are my favorite place to go when my mind searches for peace."</div>
+      <div class="quote">"With you, every day is a celebration."</div>
+      <div class="quote">"You make my heart smile."</div>
+      <div class="quote">"I loved you yesterday, I love you still, I always have, I always will."</div>
+      <div class="quote">"Every moment with you is magic."</div>
+      <div class="quote">"You are my today and all of my tomorrows."</div>
+      <div class="quote">"In your smile I see something more beautiful than the stars."</div>
+    </div>
+
+    <a href="final.html" class="btn enter">Next ➜</a>
+  </main>
+
+  <script src="assets/script.js"></script>
+  <script>
+    // Quotes carousel auto-fade
+    document.addEventListener('DOMContentLoaded', () => {
+      const quotes = Array.from(document.querySelectorAll('.quote'));
+      let i = 0;
+      setInterval(() => {
+        quotes[i].classList.remove('active');
+        i = (i + 1) % quotes.length;
+        quotes[i].classList.add('active');
+      }, 2500);
+    });
+  </script>
+</body>
+</html>
